@@ -35,7 +35,7 @@ namespace SpeedyAir.OrderProcessor
             var flights = flightRepository.GetAllFlights();
             foreach (var flight in flights)
             {
-                Console.WriteLine("Flight:{0},Departure:{1},Arrival:{2},Day:{3}", flight.Id, flight.Source, flight.Destination, flight.Day);
+                Console.WriteLine("Flight:{0},Departure:{1},Arrival:{2},Day:{3}", flight.Id, flight.Source, flight.Destination, flight.ServiceType);
             }
         }
 
@@ -55,14 +55,14 @@ namespace SpeedyAir.OrderProcessor
 
                 if (flightInfo != null)
                 {
-                    Console.WriteLine("Order:{0},FlightNumber:{1}, Departure:{2}, Arrival:{3}, Day:{4}", order.Id,
-                    order.FlightId,flightInfo.Source, flightInfo.Destination, flightInfo.Day);
+                    Console.WriteLine("Order:{0},FlightNumber:{1},Departure:{2}, Arrival:{3}, Day:{4}", order.Id,
+                    order.FlightId, flightInfo.Source, flightInfo.Destination, flightInfo.ServiceType);
                 }
                 else
                 {
                     Console.WriteLine("Order:{0},FlightNumber: NotScheduled", order.Id);
                 }
-                
+
             }
         }
     }

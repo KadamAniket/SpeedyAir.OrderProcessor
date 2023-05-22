@@ -24,13 +24,31 @@ namespace SpeedyAir.OrderProcessor.Repositories
                     if (orderObject != null)
                     {
                         var orderValue = orderObject["destination"].ToString();
-                        orderList.Add(new Order { Id = orderId, Destination = orderValue });
+                        var flightDayType = GetFlightDayType(orderObject["service"].ToString());
+                        orderList.Add(new Order { Id = orderId, Destination = orderValue , ServiceType = flightDayType });
                     }
 
                 }
             }
 
             return orderList;
+        }
+
+        private ServiceType GetFlightDayType(string str)
+        {
+            switch (str)
+            {
+                case "next-day":
+                    return ServiceType.NEXT_DAY;
+                   
+
+                case "same-day":
+                    return ServiceType.SAME_DAY;
+                    
+
+                default:
+                    return ServiceType.REGULAR;
+            }
         }
     }
 }

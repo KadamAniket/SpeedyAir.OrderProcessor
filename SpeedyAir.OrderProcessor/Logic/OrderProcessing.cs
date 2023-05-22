@@ -11,13 +11,13 @@ namespace SpeedyAir.OrderProcessor.Logic
     {
         public void ProcessOrders(List<Order> orders, List<Flight> flights)
         {
-            var sortedFlights = flights.OrderBy(m => m.Day).ToList();
+            var sortedFlights = flights.OrderBy(m => m.ServiceType);
 
             foreach (var order in orders)
             {
                 foreach (var flight in sortedFlights)
                 {
-                    if (order.Destination == flight.Destination && flight.Capacity > 0)
+                    if (order.Destination == flight.Destination && order.ServiceType == flight.ServiceType && flight.Capacity > 0)
                     {
                         order.FlightId = flight.Id;
                         flight.Capacity--;

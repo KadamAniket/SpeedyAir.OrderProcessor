@@ -9,7 +9,7 @@ namespace SpeedyAir.OrderProcessor.Models
         public int Id { get; set; }
         public string Source { get; set; }
         public string Destination { get; set; }
-        public int Day { get; set; }
+        public ServiceType ServiceType { get; set; }
         public int Capacity { get; set; }
     }
 }
