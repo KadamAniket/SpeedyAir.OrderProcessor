@@ -1,16 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using SpeedyAir.OrderProcessor.Models;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using SpeedyAir.OrderProcessor.Models;
 
 namespace SpeedyAir.OrderProcessor.Repositories
 {
-    internal class OrderRepository
+    internal class OrderRepository : IRepository<Order>
     {
-        public List<Order> GetAllOrders()
+        public IList<Order> GetAll()
         {
             List<Order> orderList = new List<Order>();
             using (StreamReader r = new StreamReader("orders.json"))

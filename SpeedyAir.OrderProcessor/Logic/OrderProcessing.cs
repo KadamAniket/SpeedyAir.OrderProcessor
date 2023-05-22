@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace SpeedyAir.OrderProcessor.Logic
 {
-    internal class OrderProcessing
+    internal class OrderProcessing : IOrderProcess
     {
-        public void ProcessOrders(List<Order> orders, List<Flight> flights)
+        public void ProcessOrders(IList<Order> orders, IList<Flight> flights)
         {
             var sortedFlights = flights.OrderBy(m => m.ServiceType);
 
